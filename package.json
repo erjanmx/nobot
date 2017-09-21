@@ -1,0 +1,16 @@
+{
+  "name": "nobot",
+  "version": "1.0.0",
+  "description": "NambaOne Bot Tester",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.0",
+    "url": "^0.11.0"
+  }
+}
