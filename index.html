@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+ 		<template v-for="response in responses">
+        	<li class="news-item">
+            	<span class="method">Method: {{ response.method }}</span>
+            	<br />
+            	<span class="method">Path: {{ response.path_name }}</span>
+            	<br />
+            	<span class="method">Query params: {{ response.query_params }}</span>
+            	<br />
+            	<span class="method">Request body: {{ response.request_body }}</span>
+            	<br />
+        	</li>
+    	</template>
+  	</div>
+</body>
+    <script src="main.js"></script>
+</html>
