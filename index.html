@@ -1,26 +1,59 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="socket.io/socket.io.js"></script>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- <script src="socket.io/socket.io.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
 </head>
 <body>
-	<div id="app">
- 		<template v-for="response in responses">
-        	<li class="news-item">
-            	<span class="method">Method: {{ response.method }}</span>
-            	<br />
-            	<span class="method">Path: {{ response.path_name }}</span>
-            	<br />
-            	<span class="method">Query params: {{ response.query_params }}</span>
-            	<br />
-            	<span class="method">Request body: {{ response.request_body }}</span>
-            	<br />
-        	</li>
-    	</template>
-  	</div>
+<div id="app">
+<div class="container clearfix">
+    <div class="chat">
+      <div class="chat-header clearfix">
+
+        <div class="chat-about">
+          <div class="chat-with">Chat with Bot</div>
+          <div class="status">
+              {{ bot_status }}
+          </div>
+        </div>
+      </div> <!-- end chat-header -->
+
+      <div class="chat-history" id = "chat-history">
+        <ul style="list-style-type: none;">
+          <template v-for="message in messages">
+            <li class="clearfix">
+              <div :class="message.from_bot ? 'left' : 'right'" class="message-data">
+                <span class="message-data-name">{{ message.from_bot ? "Bot": "You" }}</span>
+                <i class="fa fa-circle me"></i>
+              </div>
+              <div :class="message.from_bot ? 'other-message' : 'my-message'" class="message" >
+                {{ message.content }}
+              </div>
+            </li>
+          </template>
+
+        </ul>
+
+      </div> <!-- end chat-history -->
+
+      <div class="chat-message clearfix">
+        <textarea v-on:keyup.enter="send" v-model="input" placeholder ="Type your message" rows="2"></textarea>
+
+        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+        <i class="fa fa-file-image-o"></i>
+
+        <button v-on:click="send">Send</button>
+        <button v-on:click="connect">Connect</button>
+
+      </div> <!-- end chat-message -->
+
+    </div> <!-- end chat -->
+
+  </div> <!-- end container -->
+</div> <!-- end container -->
+
 </body>
-    <script src="main.js"></script>
+<script src="bundle.js"></script>
 </html>

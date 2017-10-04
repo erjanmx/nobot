@@ -2,13 +2,16 @@
 
 var fs = require('fs');
 var url = require('url');
+var axios = require('axios');
 const http = require('http');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
+const bot_host = 'http://127.0.0.1:8000?token=123';
+
 var sock;
-const stub_response = '{"success":true,"data":{"content":"stubbed_content","id":1,"type":"text/plain","chat_id":1,"name":"","image":""}}';
+const stub_response = '{"success":true,"data":{"content":"stubbed_content","id":1,"type":"text/plain","status":0,"chat_id":1000,"name":"","image":""}}';
 
 const server = http.createServer((request, response) => {
   let request_body = '';
@@ -40,7 +43,7 @@ const server = http.createServer((request, response) => {
       sock.emit('stream', result);
 
     } else {
-      response.writeHead(200, {"Content-Type": "text/html"});
+      response.writeHead(200);
       response.write(data, "utf8");
       response.end();
     }
@@ -54,6 +57,50 @@ server.listen(port, hostname, () => {
 
 var io = require('socket.io')(server);
 
-io.sockets.on('connection', function(socket){
+io.sockets.on('connection', function(socket) {
+    console.log('connected');
     sock = socket;
+
+    socket.on('bot', function (from, msg) {
+      let params = {};
+
+      switch (from) {
+        case 'message/new':
+          params = {
+            'event': from,
+            'data':{
+              'id': 10000,
+              "content": msg,
+              "status": 0,
+              "type":"text/plain",
+              "sender_id": 1,
+              "chat_id": 1000
+            }
+          }
+          break;
+        case 'user/follow':
+          params = {
+            'event': from,
+            'data': {
+              'id': 1,
+              'name': 'nobot',
+              'gender': 'M',
+              'birthdate': ''
+            },
+          }
+          break;
+      }
+
+      axios.post(bot_host, JSON.stringify(params), {
+        headers: { 'Content-Type': 'text/plain' }
+      })
+      .then(function (response) {
+        // console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    });
+
 });
+
