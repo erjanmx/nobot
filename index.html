@@ -29,7 +29,7 @@
                 <i class="fa fa-circle me"></i>
               </div>
               <div :class="message.from_bot ? 'other-message' : 'my-message'" class="message" >
-                {{ message.content }}
+                <pre>{{ message.content }}</pre>
               </div>
             </li>
           </template>
@@ -44,8 +44,9 @@
         <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
         <i class="fa fa-file-image-o"></i>
 
-        <button v-on:click="send">Send</button>
-        <button v-on:click="connect">Connect</button>
+        <button v-on:click="send" class="right">Send</button>
+        <button v-on:click="follow" class="left">Follow</button>
+        <button v-on:click="unfollow" class="left">Unfollow</button>
 
       </div> <!-- end chat-message -->
 

@@ -2,27 +2,22 @@
 
 var fs = require('fs');
 var url = require('url');
+var http = require('http');
 var axios = require('axios');
-const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+var socket;
+var settings = require('./settings.json');
 
-const bot_host = 'http://127.0.0.1:8000?token=123';
-
-var sock;
-const stub_response = '{"success":true,"data":{"content":"stubbed_content","id":1,"type":"text/plain","status":0,"chat_id":1000,"name":"","image":""}}';
 
 const server = http.createServer((request, response) => {
   let request_body = '';
-  let path_name = url.parse(request.url).pathname;
-
   if (request.method == 'POST') {
     request.on('data', function(d) {
         request_body += d;
     });
   }
 
+  let path_name = url.parse(request.url).pathname;
   if (path_name == '/') {
     path_name = '/index.html';
   }
@@ -30,7 +25,7 @@ const server = http.createServer((request, response) => {
   fs.readFile(__dirname + path_name, function(error, data) {
     if (error) {
       response.writeHead(200, {'Content-Type': 'application/json'});
-      response.end(stub_response);
+      response.end(JSON.stringify(settings.server_response));
 
       let result = {
         'method': request.method,
@@ -40,7 +35,8 @@ const server = http.createServer((request, response) => {
         'request_body': request_body
       };
 
-      sock.emit('stream', result);
+      // send all info that came from bot
+      socket.emit('stream', result);
 
     } else {
       response.writeHead(200);
@@ -50,18 +46,17 @@ const server = http.createServer((request, response) => {
   });
 });
 
-
-server.listen(port, hostname, () => {
-  console.log(`Server started. Point your bot endpoint to http://${hostname}:${port}/`);
+server.listen(settings.server_port, settings.server_host, () => {
+  console.log(`Server started. Point your bot endpoint to http://${settings.server_host}:${settings.server_port}`);
 });
 
 var io = require('socket.io')(server);
-
-io.sockets.on('connection', function(socket) {
+io.sockets.on('connection', function(sock) {
     console.log('connected');
-    sock = socket;
+    socket = sock;
 
-    socket.on('bot', function (from, msg) {
+    // handle events and send them to bot's endpoint
+    sock.on('bot', function (from, msg) {
       let params = {};
 
       switch (from) {
@@ -69,34 +64,30 @@ io.sockets.on('connection', function(socket) {
           params = {
             'event': from,
             'data':{
-              'id': 10000,
+              'id': settings.message_id,
               "content": msg,
               "status": 0,
               "type":"text/plain",
-              "sender_id": 1,
-              "chat_id": 1000
+              "sender_id": settings.user_id,
+              "chat_id": settings.chat_id
             }
-          }
+          };
           break;
         case 'user/follow':
+        case 'user/unfollow':
           params = {
             'event': from,
             'data': {
-              'id': 1,
+              'id': settings.user_id,
               'name': 'nobot',
               'gender': 'M',
               'birthdate': ''
             },
-          }
+          };
           break;
       }
 
-      axios.post(bot_host, JSON.stringify(params), {
-        headers: { 'Content-Type': 'text/plain' }
-      })
-      .then(function (response) {
-        // console.log(response);
-      })
+      axios.post(settings.bot_host, JSON.stringify(params))
       .catch(function (error) {
         console.log(error);
       });

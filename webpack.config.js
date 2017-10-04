@@ -4,9 +4,6 @@ module.exports = {
     filename: "bundle.js"
   },
 
-  watch: true,
-
-  // Automatically reload the page when compilation is done.
   devServer: {
     inline: true
   },
@@ -25,4 +22,4 @@ module.exports = {
       }
     ]
   }
-}
+};

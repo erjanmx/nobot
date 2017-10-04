@@ -1,14 +1,15 @@
 /*jshint esversion: 6 */
-import Vue from 'vue'
+import Vue from 'vue';
 
-require('./app.scss')
+require('./app.scss');
 
 function getParameterByName(name, url) {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    if ((! results) || (! results[2])) {
+      return null;
+    }
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
@@ -51,8 +52,12 @@ var app = new Vue({
         this.input = '';
       },
 
-      connect: function () {
+      follow: function () {
         socket.emit('bot', 'user/follow');
+      },
+
+      unfollow: function () {
+        socket.emit('bot', 'user/unfollow');
       }
     },
     updated: function() {
