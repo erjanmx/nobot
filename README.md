@@ -9,6 +9,7 @@ May come handy for testing your own made bots cause testing with real device and
 requires webpack installed globally
 
 - clone repo
+- run `npm install` to install all dependencies
 - run `npm run build` to build client side js/css bundle
 - change your bot's api endpoint from `https://api.namba1.co` to `http://127.0.0.1:3000` so app could serve as a bot api server
 - set in `./settings.json` the variable bot_host so the server could send events to your bot
