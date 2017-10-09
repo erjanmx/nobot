@@ -22,14 +22,14 @@ You'll see chat window. From there you can send events such as `user/follow`, `u
 - method
 - uri
 - headers
-- query params
-- post data
+- get params
+- post params
 
 # screenshot
 here is the screenshot of using this app with [simple echo bot](https://github.com/erjanmx/django-namba-one-bot)
 
-![Imgur](https://i.imgur.com/Qny6Rew.png)
+![Imgur](https://i.imgur.com/T1DHLaG.png)
 
 # contribute
 
-contributing is highly appreciated as there are many things left to do
+contributing is highly appreciated as there are many things to do
