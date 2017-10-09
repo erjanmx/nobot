@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import Vue from 'vue';
 
-require('./app.scss');
+require('../assets/app.scss');
 
 var socket = require('socket.io-client')('http://localhost:3000');
 
