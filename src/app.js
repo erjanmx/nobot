@@ -3,28 +3,16 @@ import Vue from 'vue';
 
 require('./app.scss');
 
-function getParameterByName(name, url) {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if ((! results) || (! results[2])) {
-      return null;
-    }
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
 var socket = require('socket.io-client')('http://localhost:3000');
 
 socket.on('stream', function(data){
-  console.log(data);
-  var content = getParameterByName('content', data.request_body);
-
   app.bot_status = 'connected';
 
-  if (content) {
+  console.log(data);
+  if (data.post_params.content) {
     app.messages.push({
       'from_bot': true,
-      'content': content,
+      'content': data.post_params.content,
     });
   }
 });

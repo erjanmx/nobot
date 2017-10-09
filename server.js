@@ -4,6 +4,7 @@ var fs = require('fs');
 var url = require('url');
 var http = require('http');
 var axios = require('axios');
+var queryString = require('querystring');
 
 var socket;
 var settings = require('./settings.json');
@@ -28,11 +29,11 @@ const server = http.createServer((request, response) => {
       response.end(JSON.stringify(settings.server_response));
 
       let result = {
+        'uri': path_name,
         'method': request.method,
         'headers': request.headers,
-        'path_name': path_name,
-        'query_params': url.parse(request.url, true).query,
-        'request_body': request_body
+        'get_params': url.parse(request.url, true).query,
+        'post_params': queryString.parse(request_body)
       };
 
       // send all info that came from bot
