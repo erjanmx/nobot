@@ -6,7 +6,7 @@ require('../assets/app.scss');
 
 // using proxy because n1 servers do not allow cross-origin requests
 var file_api_url = 'https://cors-anywhere.herokuapp.com/https://files.namba1.co?token=';
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require('socket.io-client')('http://127.0.0.1:3000');
 
 function parseBlob(response) {
   return response.blob();
