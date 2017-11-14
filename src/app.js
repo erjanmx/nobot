@@ -19,7 +19,7 @@ socket.on('stream', function(data) {
   if (data.post_params.content) {
     const msg_id = Date.now();
 
-    if (data.post_params.type != 'text/plain') {
+    if (data.post_params.type === 'media/image') {
       fetch(file_api_url + data.post_params.content).then(parseBlob).then(function (blob) {
         const img = document.getElementById(msg_id);
         img.src = URL.createObjectURL(blob);
