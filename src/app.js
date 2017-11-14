@@ -43,10 +43,8 @@ var app = new Vue({
       bot_status: 'not connected',
     },
     methods: {
-      send: function (event) {
-        if (this.input == '') {
-            return;
-        }
+      send (event) {
+        if (this.input === '') return;
 
         this.messages.push({
             'msg_id': Date.now(),
@@ -60,15 +58,15 @@ var app = new Vue({
         this.input = '';
       },
 
-      follow: function () {
+      follow () {
         socket.emit('bot', 'user/follow');
       },
 
-      unfollow: function () {
+      unfollow () {
         socket.emit('bot', 'user/unfollow');
       }
     },
-    updated: function() {
+    updated () {
         var el = document.getElementById('chat-history');
         el.scrollTop = el.scrollHeight;
     }
