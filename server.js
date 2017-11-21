@@ -29,11 +29,11 @@ const server = http.createServer((request, response) => {
       response.end(JSON.stringify(settings.server_response));
 
       let result = {
-        'uri': path_name,
-        'method': request.method,
-        'headers': request.headers,
-        'get_params': url.parse(request.url, true).query,
-        'post_params': queryString.parse(request_body)
+        uri: path_name,
+        method: request.method,
+        headers: request.headers,
+        get_params: url.parse(request.url, true).query,
+        post_params: queryString.parse(request_body)
       };
 
       // send all info that came from bot
@@ -41,7 +41,7 @@ const server = http.createServer((request, response) => {
 
     } else {
       response.writeHead(200);
-      response.write(data, "utf8");
+      response.write(data, 'utf8');
       response.end();
     }
   });
@@ -63,26 +63,26 @@ io.sockets.on('connection', function(sock) {
       switch (from) {
         case 'message/new':
           params = {
-            'event': from,
-            'data':{
-              'id': settings.message_id,
-              "content": msg,
-              "status": 0,
-              "type":"text/plain",
-              "sender_id": settings.user_id,
-              "chat_id": settings.chat_id
+            event: from,
+            data:{
+              id: settings.message_id,
+              content: msg,
+              status: 0,
+              type: 'text/plain',
+              sender_id: settings.user_id,
+              chat_id: settings.chat_id
             }
           };
           break;
         case 'user/follow':
         case 'user/unfollow':
           params = {
-            'event': from,
-            'data': {
-              'id': settings.user_id,
-              'name': 'nobot',
-              'gender': 'M',
-              'birthdate': ''
+            event: from,
+            data: {
+              id: settings.user_id,
+              name: 'nobot',
+              gender: 'M',
+              birthdate: ''
             },
           };
           break;
