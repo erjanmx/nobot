@@ -88,7 +88,7 @@ io.sockets.on('connection', function(sock) {
           break;
       }
 
-      axios.post(settings.bot_host, JSON.stringify(params))
+      axios.post(settings.bot_host, params)
       .catch(function (error) {
         console.log(error);
       });
