@@ -1,13 +1,13 @@
 /*jshint esversion: 6 */
 
-var fs = require('fs');
-var url = require('url');
-var http = require('http');
-var axios = require('axios');
-var queryString = require('querystring');
+const fs = require('fs');
+const url = require('url');
+const http = require('http');
+const axios = require('axios');
+const queryString = require('querystring');
 
-var socket;
-var settings = require('./settings.json');
+let socket;
+const settings = require('./settings.json');
 
 
 const server = http.createServer((request, response) => {
@@ -29,11 +29,11 @@ const server = http.createServer((request, response) => {
       response.end(JSON.stringify(settings.server_response));
 
       let result = {
-        'uri': path_name,
-        'method': request.method,
-        'headers': request.headers,
-        'get_params': url.parse(request.url, true).query,
-        'post_params': queryString.parse(request_body)
+        uri: path_name,
+        method: request.method,
+        headers: request.headers,
+        get_params: url.parse(request.url, true).query,
+        post_params: queryString.parse(request_body)
       };
 
       // send all info that came from bot
@@ -41,7 +41,7 @@ const server = http.createServer((request, response) => {
 
     } else {
       response.writeHead(200);
-      response.write(data, "utf8");
+      response.write(data, 'utf8');
       response.end();
     }
   });
@@ -51,7 +51,7 @@ server.listen(settings.server_port, settings.server_host, () => {
   console.log(`Server started. Point your bot endpoint to http://${settings.server_host}:${settings.server_port}`);
 });
 
-var io = require('socket.io')(server);
+const io = require('socket.io')(server);
 io.sockets.on('connection', function(sock) {
     console.log('connected');
     socket = sock;
@@ -63,26 +63,26 @@ io.sockets.on('connection', function(sock) {
       switch (from) {
         case 'message/new':
           params = {
-            'event': from,
-            'data':{
-              'id': settings.message_id,
-              "content": msg,
-              "status": 0,
-              "type":"text/plain",
-              "sender_id": settings.user_id,
-              "chat_id": settings.chat_id
+            event: from,
+            data:{
+              id: settings.message_id,
+              content: msg,
+              status: 0,
+              type: 'text/plain',
+              sender_id: settings.user_id,
+              chat_id: settings.chat_id
             }
           };
           break;
         case 'user/follow':
         case 'user/unfollow':
           params = {
-            'event': from,
-            'data': {
-              'id': settings.user_id,
-              'name': 'nobot',
-              'gender': 'M',
-              'birthdate': ''
+            event: from,
+            data: {
+              id: settings.user_id,
+              name: 'nobot',
+              gender: 'M',
+              birthdate: ''
             },
           };
           break;
