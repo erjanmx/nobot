@@ -1,13 +1,13 @@
 /*jshint esversion: 6 */
 
-var fs = require('fs');
-var url = require('url');
-var http = require('http');
-var axios = require('axios');
-var queryString = require('querystring');
+const fs = require('fs');
+const url = require('url');
+const http = require('http');
+const axios = require('axios');
+const queryString = require('querystring');
 
-var socket;
-var settings = require('./settings.json');
+let socket;
+const settings = require('./settings.json');
 
 
 const server = http.createServer((request, response) => {
@@ -51,7 +51,7 @@ server.listen(settings.server_port, settings.server_host, () => {
   console.log(`Server started. Point your bot endpoint to http://${settings.server_host}:${settings.server_port}`);
 });
 
-var io = require('socket.io')(server);
+const io = require('socket.io')(server);
 io.sockets.on('connection', function(sock) {
     console.log('connected');
     socket = sock;
