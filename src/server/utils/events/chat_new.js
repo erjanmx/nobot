@@ -1,14 +1,16 @@
+const settings = require('../../../../settings.json')
+
 module.exports = {
   "event": "chat/new",
   "data": {
-    "chat_id": 1000,
+    "chat_id": settings.chat.id,
     "user": {
       "active": true,
-      "id": 1,
-      "name": "NoBot",
-      "phone": "0123456789",
-      "gender": "M",
-      "birthdate": 631152000,
+      "id": settings.user.id,
+      "name": settings.user.name,
+      "phone": settings.user.phone,
+      "gender": settings.user.gender,
+      "birthdate": settings.user.birthdate,
       "is_online": false,
       "last_login": 631152000,
       "avatar": "",

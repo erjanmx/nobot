@@ -1,7 +1,23 @@
 {
-  "bot_host": "http://127.0.0.1:8000",
+    "port": 3000,
+    "bot_url": "http://127.0.0.1:8000",
 
-  "user_id": 1,
-  "chat_id": 1000,
-  "message_id": 10000
+    "user": {
+        "id": 1,
+        "name": "NoBot",
+        "phone": "0123456789",
+        "gender": "M",
+        "language": "ru",
+        "birthdate": 631152000
+    },
+    "chat": {
+        "id": 10000,
+        "name": "",
+        "image": ""
+    },
+    "message": {
+        "id": 100000,
+        "content": "",
+        "type": "text/plain"
+    }
 }

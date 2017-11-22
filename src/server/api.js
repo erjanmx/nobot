@@ -1,4 +1,4 @@
-const url = require('url');
+const url = require('url')
 const router = require('express').Router()
 const chatsWriteResponse = require('./utils/responses/chats_write')
 const chatsCreateResponse = require('./utils/responses/chats_create')
@@ -12,7 +12,7 @@ router.use(function logToSocket (req, res, next) {
     headers: req.headers,
     get_params: url.parse(req.url, true).query,
     post_params: req.body
-  };
+  }
 
   // send all info that came from bot
   req.io.sockets.emit('stream', response)
@@ -25,7 +25,13 @@ router.post('/chats/create', function (req, res) {
 })
 
 router.post('/chats/:id/write', function (req, res) {
-  res.send(chatsWriteResponse)
+  const response = chatsWriteResponse
+
+  // make alike real response
+  response.data.type = req.body.type
+  response.data.chat_id = req.params.id
+  response.data.content = req.body.content
+  res.send(response)
 })
 
 router.get('/chats/:id/typing', function (req, res) {

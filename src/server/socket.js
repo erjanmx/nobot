@@ -1,43 +1,29 @@
 const axios = require('axios')
-const settings = require('../../settings.json');
+const bot_url = require('../../settings.json').bot_url
+const messageNewEvent = require('./utils/events/message_new')
+const userFollowEvent = require('./utils/events/user_follow')
+const userUnfollowEvent = require('./utils/events/user_unfollow')
 
 
 module.exports = function(io) {
   io.on('connection', function(socket) {
-    socket.on('bot', function(event, msg) {
+    socket.on('bot', function(data) {
       let params = {};
-      switch (event) {
+      switch (data.event) {
         case 'message/new':
-          params = {
-            event: event,
-            data: {
-              id: 1,
-              content: msg,
-              status: 0,
-              type: 'text/plain',
-              sender_id: 1,
-              chat_id: 1
-            }
-          };
-          break;
+          params = messageNewEvent
+          params.data.id = data.message.id
+          params.data.type = data.message.type
+          params.data.content = data.message.content
+          break
         case 'user/follow':
+          params = userFollowEvent
+          break
         case 'user/unfollow':
-          params = {
-            event: event,
-            data: {
-              id: 1,
-              name: 'nobot',
-              gender: 'M',
-              birthdate: ''
-            },
-          };
-          break;
+          params = userUnfollowEvent
+          break
       }
-      console.log(params);
-      axios.post(settings.bot_host, params)
-      .catch(function (error) {
-        console.log(error);
-      })
+      axios.post(bot_url, params).catch((error) => console.log(error))
     })
   })
 }

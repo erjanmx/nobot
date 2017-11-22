@@ -46,24 +46,33 @@ const app = new Vue({
       send (event) {
         if (this.input === '') return;
 
+        const msg_id = Date.now()
+
         this.messages.push({
-            'msg_id': Date.now(),
+            'msg_id': msg_id,
             'from_bot': false,
             'type': 'text/plain',
             'content': this.input,
         });
 
-        socket.emit('bot', 'message/new', this.input);
+        socket.emit('bot', {
+          event: 'message/new',
+          message: {
+            id: msg_id,
+            type: 'text/plain',
+            content: this.input
+          }
+        })
 
         this.input = '';
       },
 
       follow () {
-        socket.emit('bot', 'user/follow');
+        socket.emit('bot', {event: 'user/follow'});
       },
 
       unfollow () {
-        socket.emit('bot', 'user/unfollow');
+        socket.emit('bot', {event: 'user/unfollow'});
       }
     },
     updated () {
