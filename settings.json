@@ -1,8 +1,8 @@
 {
-  "server_host": "127.0.0.1",
+  "server_host": "localhost",
   "server_port": 3000,
 
-  "bot_host": "http://127.0.0.1:8000",
+  "bot_host": "http://localhost:8000",
 
   "user_id": 1,
   "chat_id": 1000,
@@ -19,5 +19,11 @@
       "name": "",
       "image": ""
     }
+  },
+  "chat_create_response": {
+     "success": true,
+     "data": {
+       "id": 1000
+     }
   }
 }

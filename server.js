@@ -26,14 +26,24 @@ const server = http.createServer((request, response) => {
   fs.readFile(__dirname + path_name, function(error, data) {
     if (error) {
       response.writeHead(200, {'Content-Type': 'application/json'});
-      response.end(JSON.stringify(settings.server_response));
+
+      let res = ('/chats/create' == path_name) ?
+         settings.chat_create_response : settings.server_response
+
+      response.end(JSON.stringify(res));
+
+      try {
+       body = JSON.parse(request_body)
+      } catch(e) {
+       body = queryString.parse(request_body)
+      }
 
       let result = {
         uri: path_name,
         method: request.method,
         headers: request.headers,
         get_params: url.parse(request.url, true).query,
-        post_params: queryString.parse(request_body)
+        post_params: body
       };
 
       // send all info that came from bot
@@ -95,4 +105,3 @@ io.sockets.on('connection', function(sock) {
     });
 
 });
-
