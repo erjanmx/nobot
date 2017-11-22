@@ -1,10 +1,10 @@
-{
+module.exports = {
   "event": "user/follow",
   "data": {
-    "id": 150685468,
-    "name": "Integrated",
+    "id": 1,
+    "name": "NoBot",
     "gender": "M",
-    "birthdate": 664675200,
+    "birthdate": 631152000,
     "language": "RU"
   }
 }

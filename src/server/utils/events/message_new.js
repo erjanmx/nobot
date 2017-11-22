@@ -1,17 +1,17 @@
-{
+module.exports = {
   "event": "message/new",
   "data": {
-    "content": "1",
-    "id": 1621383,
+    "content": "",
+    "id": 10000,
     "type": "text/plain",
     "link": null,
     "status": 0,
     "expiration_date": null,
     "viewed_times": null,
-    "created_at": 1511301557,
-    "updated_at": 1511301557,
-    "sender_id": 150685468,
-    "chat_id": 36589,
+    "created_at": 1511000000,
+    "updated_at": 1511000000,
+    "sender_id": 1,
+    "chat_id": 1000,
     "language": "ru"
   }
 }

@@ -2,7 +2,7 @@
 import 'whatwg-fetch'
 import Vue from 'vue';
 
-require('../assets/app.scss');
+require('./assets/app.scss');
 
 // using proxy because n1 servers do not allow cross-origin requests
 const file_api_url = 'https://cors-anywhere.herokuapp.com/https://files.namba1.co?token=';

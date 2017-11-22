@@ -1,7 +1,7 @@
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/client/app.js",
   output: {
-    filename: "bundle.js"
+    filename: "src/server/public/js/bundle.js"
   },
 
   devServer: {

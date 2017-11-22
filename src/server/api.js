@@ -1,11 +1,11 @@
 const url = require('url');
 const router = require('express').Router()
-const chatsWriteResponse = require('./responses/chats_write')
-const chatsCreateResponse = require('./responses/chats_create')
-const chatsTypingResponse = require('./responses/chats_typing')
-const chatsStopTypingResponse = require('./responses/chats_stoptyping')
+const chatsWriteResponse = require('./utils/responses/chats_write')
+const chatsCreateResponse = require('./utils/responses/chats_create')
+const chatsTypingResponse = require('./utils/responses/chats_typing')
+const chatsStopTypingResponse = require('./utils/responses/chats_stoptyping')
 
-router.use(function logSocket (req, res, next) {
+router.use(function logToSocket (req, res, next) {
   const response = {
     uri: url.parse(req.url).pathname,
     method: req.method,
@@ -15,7 +15,7 @@ router.use(function logSocket (req, res, next) {
   };
 
   // send all info that came from bot
-  // socket.emit('stream', response);
+  req.io.sockets.emit('stream', response)
   console.log(response)
   next()
 })
