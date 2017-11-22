@@ -11,15 +11,9 @@ app.use(bodyParser.urlencoded())
 
 app.use(express.static(__dirname + '/public/'))
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/index.html')
-});
-
 app.use('/api', function (req, res, next) {
     req.io = io;
     next();
 }, api);
 
-// app.use('/api', api)
-
-server.listen(3000, () => console.log(`Server started. Point your bot endpoint to http://127.0.0.1:3000`))
+server.listen(3000, () => console.log(`Server started. Point your bot endpoint to http://127.0.0.1:3000/api`))
