@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./src/client/app.js",
+  entry: "./src/client/index.js",
   output: {
     filename: "public/js/bundle.js"
   },
@@ -15,10 +15,17 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          hotReload: true // disables Hot Reload
+        }
       }
     ]
   }

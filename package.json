@@ -19,7 +19,7 @@
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.4",
     "url": "^0.11.0",
-    "vue": "^2.4.4",
+    "vue": "^2.5.8",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -28,6 +28,8 @@
     "nodemon": "^1.12.1",
     "sass-loader": "^6.0.6",
     "scss-loader": "0.0.1",
-    "style-loader": "^0.19.0"
+    "style-loader": "^0.19.0",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.8"
   }
 }

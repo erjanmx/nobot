@@ -1,5 +1,5 @@
 const axios = require('axios')
-const bot_url = require('../../settings.json').bot_url
+const botUrl = require('../../settings.json').bot_url
 const messageNewEvent = require('./utils/events/message_new')
 const userFollowEvent = require('./utils/events/user_follow')
 const userUnfollowEvent = require('./utils/events/user_unfollow')
@@ -23,7 +23,7 @@ module.exports = function(io) {
           params = userUnfollowEvent
           break
       }
-      axios.post(bot_url, params).catch((error) => console.log(error))
+      axios.post(botUrl, params).catch((error) => console.log(error))
     })
   })
 }
