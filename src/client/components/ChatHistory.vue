@@ -10,7 +10,7 @@
                     <div :class="message.from_bot ? 'other-message' : 'my-message'" class="message" >
                         <pre v-if="message.type == 'text/plain'">{{ message.content }}</pre>
                         <pre v-else>
-                            <img :id="message.msg_id" src="images/loading.gif" />
+                            <img :id="message.id" src="images/loading.gif" />
                         </pre>
                     </div>
                 </li>

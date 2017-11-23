@@ -5,51 +5,7 @@
     <title>NoBot</title>
 </head>
 <body>
-<div id="app">
-<div class="container clearfix">
-    <div class="chat">
-      <div class="chat-header clearfix">
-        <div class="chat-about">
-          <div class="chat-with">Chat with Bot</div>
-          <div class="status">
-              {{ bot_status }}
-          </div>
-        </div>
-      </div> <!-- end chat-header -->
-
-      <div class="chat-history" id = "chat-history">
-        <ul style="list-style-type: none;">
-          <template v-for="message in messages">
-            <li class="clearfix">
-              <div :class="message.from_bot ? 'left' : 'right'" class="message-data">
-                <span class="message-data-name">{{ message.from_bot ? "Bot": "You" }}</span>
-                <i class="fa fa-circle me"></i>
-              </div>
-              <div :class="message.from_bot ? 'other-message' : 'my-message'" class="message" >
-              <pre v-if="message.type == 'text/plain'">{{ message.content }}</pre>
-              <pre v-else>
-                <img :id="message.msg_id" src="images/loading.gif" />
-              </pre>
-            </div>
-            </li>
-          </template>
-        </ul>
-      </div> <!-- end chat-history -->
-
-      <div class="chat-message clearfix">
-        <textarea v-on:keyup.enter="send" v-model="input" placeholder ="Type your message" rows="2"></textarea>
-
-        <button v-on:click="send" class="right">Send</button>
-        <button v-on:click="follow" class="left">Follow</button>
-        <button v-on:click="unfollow" class="left">Unfollow</button>
-
-      </div> <!-- end chat-message -->
-
-    </div> <!-- end chat -->
-
-  </div> <!-- end container -->
-</div> <!-- end container -->
-
+    <div id="app"></div>
 </body>
 <script src="js/bundle.js"></script>
 </html>
