@@ -4,7 +4,8 @@ import VueSocket from 'vue-socket.io'
 
 Vue.config.productionTip = false
 
-const socket = require('socket.io-client')('http://127.0.0.1:3000')
+const port = require('../../settings.json').port
+const socket = require('socket.io-client')(`http://127.0.0.1:${port}`)
 
 Vue.use(VueSocket, socket)
 

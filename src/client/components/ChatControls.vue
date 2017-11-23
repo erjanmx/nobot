@@ -20,7 +20,6 @@ export default {
             if (this.input === '') return
 
             this.$emit('new-message', {
-                'id':  Date.now(),
                 'from_bot': false,
                 'type': 'text/plain',
                 'content': this.input,
