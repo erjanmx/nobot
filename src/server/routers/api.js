@@ -1,9 +1,9 @@
 const url = require('url')
 const router = require('express').Router()
-const chatsWriteResponse = require('./utils/responses/chats_write')
-const chatsCreateResponse = require('./utils/responses/chats_create')
-const chatsTypingResponse = require('./utils/responses/chats_typing')
-const chatsStopTypingResponse = require('./utils/responses/chats_stoptyping')
+const chatsWriteResponse = require('../utils/responses/chats_write')
+const chatsCreateResponse = require('../utils/responses/chats_create')
+const chatsTypingResponse = require('../utils/responses/chats_typing')
+const chatsStopTypingResponse = require('../utils/responses/chats_stoptyping')
 
 router.use(function logToSocket (req, res, next) {
   const response = {
