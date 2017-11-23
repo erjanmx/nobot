@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "start": "node server.js"
+    "serve": "node src/server/main.js"
   },
   "author": "",
   "license": "ISC",
