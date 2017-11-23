@@ -9,10 +9,10 @@ requires webpack installed globally
 
 - clone repo
 - run `npm install && npm run build` to install all dependencies and build client side bundle
-- change your bot's api endpoint from `https://api.namba1.co` to `http://127.0.0.1:3000` so app could serve as a bot api server
+- change your bot's api endpoint from `https://api.namba1.co` to `http://127.0.0.1:3000/api` so app could serve as a bot api server
 - set in `./settings.json` the variable `bot_host` so the server could send events to your bot
 - run your bot
-- run `npm run start` this will start local webserver at `http://127.0.0.1:3000`, open it in your favorite browser
+- run `npm run serve` this will start local webserver at `http://127.0.0.1:3000`, open it in your favorite browser
 
 You'll see chat window. From there you can send events such as `user/follow`, `user/unfollow` and mainly `message/new` by sending message. Every event is then handled by the server and sent to your bot's endpoint and as your bot responds everything would be sent back to your browser. If your bot sends message by using `chat/:chat_id/write` all it's content will appear as bot's message in your chat window. If your bot responds with `media/image` content type, image will be downloaded from actual namba1 servers and shown in your chat window as regular image
 
@@ -31,4 +31,4 @@ here is the screenshot of using this app with [simple echo bot](https://github.c
 
 # contribute
 
-contributing is highly appreciated as there are many things to do
+contributing is highly appreciated
