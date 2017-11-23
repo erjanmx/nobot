@@ -5,7 +5,8 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 require('./socket')(io)
 
-const api = require('./api')
+const api = require('./routers/api')
+const file = require('./routers/file')
 const verifier = require('./utils/verifier')
 const port = require('../../settings.json').port
 
@@ -19,5 +20,7 @@ app.use('/api', function (req, res, next) {
     req.io = io;
     next()
 }, api)
+
+app.use('/https://files.namba1.co', file)
 
 server.listen(port, () => console.log(`Server started. Point your bot endpoint to http://127.0.0.1:${port}/api`))
