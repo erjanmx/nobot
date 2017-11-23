@@ -1,6 +1,6 @@
 import 'whatwg-fetch'
 
-const fileApiUrl = 'https://cors-anywhere.herokuapp.com/https://files.namba1.co?token='
+const fileApiUrl = 'http://127.0.0.1:3000/https://files.namba1.co?token='
 
 
 export default function getFile(token) {
