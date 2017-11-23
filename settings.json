@@ -19,5 +19,11 @@
       "name": "",
       "image": ""
     }
+  },
+  "chat_create_response": {
+     "success": true,
+     "data": {
+       "id": 1000
+     }
   }
 }
