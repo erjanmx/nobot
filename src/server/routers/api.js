@@ -27,7 +27,7 @@ router.post('/chats/create', function (req, res) {
 router.post('/chats/:id/write', function (req, res) {
   const response = chatsWriteResponse
 
-  // make alike real response
+  // make like real response
   response.data.type = req.body.type
   response.data.chat_id = req.params.id
   response.data.content = req.body.content
