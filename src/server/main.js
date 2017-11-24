@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
-require('./socket')(io)
+const socketio = require('socket.io')(server)
 
+require('./socket')(socketio)
 const api = require('./routers/api')
 const file = require('./routers/file')
 const verifier = require('./utils/verifier')
@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/../../public/'))
 
 // bot requests go here
 app.use('/api', function (req, res, next) {
-    req.io = io
+    req.io = socketio
     next()
 }, api)
 
