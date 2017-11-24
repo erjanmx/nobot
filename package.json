@@ -1,6 +1,6 @@
 {
     "name": "nobot",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "NambaOne Bot Tester",
     "main": "src/server/main.js",
     "scripts": {
