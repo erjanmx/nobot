@@ -10,7 +10,7 @@ const socket = require('socket.io-client')(`http://127.0.0.1:${port}`)
 Vue.use(VueSocket, socket)
 
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    template: '<App/>',
+    components: {App}
 })

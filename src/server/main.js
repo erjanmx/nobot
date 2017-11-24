@@ -10,8 +10,8 @@ const file = require('./routers/file')
 const verifier = require('./utils/verifier')
 const port = require('../../settings.json').port
 
-app.use(bodyParser.json({ verify: verifier }))
-app.use(bodyParser.urlencoded({ verify: verifier, extended: true }))
+app.use(bodyParser.json({verify: verifier}))
+app.use(bodyParser.urlencoded({verify: verifier, extended: true}))
 
 app.use(express.static(__dirname + '/../../public/'))
 

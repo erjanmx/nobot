@@ -1,4 +1,4 @@
 module.exports = {
-    "success": true,
-    "message": ""
+    'success': true,
+    'message': ''
 }

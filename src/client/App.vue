@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import Chat from './components/Chat.vue'
+    import Chat from './components/Chat.vue'
 
-export default {
-    components: {
-        Chat
+    export default {
+        components: {
+            Chat
+        }
     }
-}
 </script>
 
 <style lang="scss">
-  @import './assets/app.scss';
+    @import './assets/app.scss';
 </style>
