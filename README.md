@@ -22,7 +22,7 @@ You'll see chat window. From there you can send events such as `user/follow`, `u
 
 - Every event is handled by the server and sent to your bot's endpoint
 - As your bot responds everything would be sent back to your browser
-- If your bot sends message by using `chat/:chat_id/write` all it's content will appear as bot's message in your chat window. If message type is `media/image`, image will be downloaded from actual namba1 servers and shown in your chat window as regular image
+- If your bot sends message by using `chats/:chat_id/write` all it's content will appear as bot's message in your chat window. If message type is `media/image`, image will be downloaded from actual namba1 servers and shown in your chat window as regular image
 
 All other information about request sent by your bot will be logged in default browser console log, this information includes:
 
