@@ -1,34 +1,34 @@
 {
-  "name": "nobot",
-  "version": "1.0.0",
-  "description": "NambaOne Bot Tester",
-  "main": "server.js",
-  "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "serve": "node src/server/main.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "request-promise": "^4.2.2",
-    "socket.io": "^2.0.3",
-    "socket.io-client": "^2.0.4",
-    "url": "^0.11.0",
-    "vue": "^2.5.8",
-    "vue-socket.io": "^2.1.1-a",
-    "whatwg-fetch": "^2.0.3"
-  },
-  "devDependencies": {
-    "css-loader": "^0.28.7",
-    "node-sass": "^4.5.3",
-    "nodemon": "^1.12.1",
-    "sass-loader": "^6.0.6",
-    "scss-loader": "0.0.1",
-    "style-loader": "^0.19.0",
-    "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.8"
-  }
+    "name": "nobot",
+    "version": "2.0.0",
+    "description": "NambaOne Bot Tester",
+    "main": "src/server/main.js",
+    "scripts": {
+        "build": "webpack",
+        "watch": "webpack --watch",
+        "serve": "node src/server/main.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "request-promise": "^4.2.2",
+        "socket.io": "^2.0.3",
+        "socket.io-client": "^2.0.4",
+        "url": "^0.11.0",
+        "vue": "^2.5.8",
+        "vue-socket.io": "^2.1.1-a",
+        "whatwg-fetch": "^2.0.3"
+    },
+    "devDependencies": {
+        "css-loader": "^0.28.7",
+        "node-sass": "^4.5.3",
+        "nodemon": "^1.12.1",
+        "sass-loader": "^6.0.6",
+        "scss-loader": "0.0.1",
+        "style-loader": "^0.19.0",
+        "vue-loader": "^13.5.0",
+        "vue-template-compiler": "^2.5.8"
+    }
 }
