@@ -1,4 +1,3 @@
-const url = require('url')
 const router = require('express').Router()
 const request = require('request-promise')
 
