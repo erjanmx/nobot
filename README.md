@@ -8,6 +8,7 @@ May come handy for testing your own made bots cause testing with real device and
 - change your bot's api endpoint from `https://api.namba1.co` to `http://127.0.0.1:3000/api`
 - set `bot_host` in `settings.json` so the server could send events to your bot
 - start your bot
+- run nobot with following commands
 
 ```
 npm install
