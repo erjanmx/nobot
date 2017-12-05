@@ -8,13 +8,13 @@ May come handy for testing your own made bots cause testing with real device and
 - change your bot's api endpoint from `https://api.namba1.co` to `http://127.0.0.1:3000/api`
 - set `bot_host` in `settings.json` so the server could send events to your bot
 - start your bot
-- run nobot with following commands
+- run nobot with following commands npm or yarn (latter is recommended)
 
 ```
-npm install
-npm run build
+yarn or npm install
+yarn build or npm run build
 
-npm run serve
+yarn serve or npm run serve
 ```
 
 Open http://127.0.0.1:3000 in your browser
