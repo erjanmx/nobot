@@ -39,11 +39,11 @@
                         'content': data.post_params.content
                     })
                     this.status = 'online'
-                    // chats/:id/typing
+                // chats/:id/typing
                 } else if (data.uri.match(/chats\/[0-9]+\/typing/)) {
                     this.status = 'typing...'
                     setTimeout(() => this.status = 'online', 5000)
-                    // chats/:id/stoptyping
+                // chats/:id/stoptyping
                 } else if (data.uri.match(/chats\/[0-9]+\/stoptyping/)) {
                     this.status = 'online'
                 }
